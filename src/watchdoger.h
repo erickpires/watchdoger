@@ -6,7 +6,7 @@ typedef uint32_t u32;
 
 class IWatchdogerNative {
     public:
-    virtual void startWorkerThread(void (*watchdogerWorker) (void *)) = 0;
+    virtual void startWorkerThread(void* (*watchdogerWorker) (void*)) = 0;
     virtual void signalWorkerThread() = 0;
 
     virtual void startTimeCounter() = 0;

@@ -28,7 +28,7 @@ void timeoutCallbackCaller(v8::Isolate* isolate, void* data) {
    Nan::Call(timeoutCallback, 1, argv);
 }
 
-void watchdogerWorker(void* data) {
+void* watchdogerWorker(void* data) {
     bool skipTimeCapture = false;
 
     u32 elapsedMs = 0;
@@ -74,6 +74,8 @@ void watchdogerWorker(void* data) {
 			}
 		}
 	}
+
+    return NULL;
 }
 
 v8::Local<v8::Value> resetWatchdogerCore() {

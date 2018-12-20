@@ -6,6 +6,8 @@
 
 #include "watchdoger.h"
 
+typedef void (*windows_thread)(void *);
+
 class WatchdogerNativeWin: public IWatchdogerNative {
 	HANDLE scriptThread = NULL;
 	HANDLE watchdogerThread = NULL;
@@ -63,8 +65,8 @@ class WatchdogerNativeWin: public IWatchdogerNative {
 		return WaitForSingleObject(event, INFINITE) == WAIT_TIMEOUT;
 	}
 
-	void startWorkerThread(void (*watchdogerWorker) (void *)) {
-    	if ((watchdogerThread = (HANDLE)_beginthread(watchdogerWorker, 4096, NULL)) == NULL) {
+	void startWorkerThread(void* (*watchdogerWorker) (void*)) {
+    	if ((watchdogerThread = (HANDLE)_beginthread((windows_thread)watchdogerWorker, 4096, NULL)) == NULL) {
     		CloseHandle(event);
     		event = NULL;
       		CloseHandle(scriptThread);
