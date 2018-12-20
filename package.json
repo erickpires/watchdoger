@@ -1,0 +1,39 @@
+{
+  "name": "watchdoger",
+  "author": {
+    "name": "Erick Pires <erick.t.pires@gmail.com>",
+    "url": "https://erickpires.com",
+    "twitter": "erick pires"
+  },
+  "version": "1.0.0-alpha",
+  "description": "Break out from scripts blocking node.js event loop",
+  "tags": [
+    "event loop",
+    "hang",
+    "watchdog"
+  ],
+  "main": "./lib/watchdoger.js",
+  "engines": {
+    "node": "8.x || 9.x || 10.x || 11.x"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "homepage": "https://github.com/erickpires/watchdoger",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "nan": "^2.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:erickpires/watchdoger.git"
+  },
+  "bugs": {
+    "url": "http://github.com/erickpires/watchdoger/issues"
+  },
+  "scripts": {
+    "install": "node install.js"
+  }
+}
