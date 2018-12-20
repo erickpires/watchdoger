@@ -9,7 +9,7 @@ class IWatchdogerNative {
     virtual void startWorkerThread(void* (*watchdogerWorker) (void*)) = 0;
     virtual void signalWorkerThread() = 0;
 
-    virtual void startTimeCounter() = 0;
+    virtual bool startTimeCounter() = 0;
     virtual u32 elapsedExecutionTime() = 0;
     virtual u32 elapsedRealTime() = 0;
     virtual bool sleepFor(u32 time) = 0;

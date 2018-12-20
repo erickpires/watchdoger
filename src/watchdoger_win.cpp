@@ -65,14 +65,17 @@ class WatchdogerNativeWin: public IWatchdogerNative {
 		return WaitForSingleObject(event, INFINITE) == WAIT_TIMEOUT;
 	}
 
-	void startWorkerThread(void* (*watchdogerWorker) (void*)) {
+	bool startWorkerThread(void* (*watchdogerWorker) (void*)) {
     	if ((watchdogerThread = (HANDLE)_beginthread((windows_thread)watchdogerWorker, 4096, NULL)) == NULL) {
-    		CloseHandle(event);
+			CloseHandle(event);
     		event = NULL;
       		CloseHandle(scriptThread);
       		scriptThread = 0;
       		Nan::ThrowError("Unable to initialize a watchdoger thread.");
+			return false;
     	}
+
+		return true;
 	}
 
     void signalWorkerThread() {
